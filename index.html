@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ApexFin - Finanças e Metas </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?
+    family=Inter:wght@400;500,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <main class="app-container">
+
+    <header class="app-header">
+        <div class="user-info">
+            <span>Olá, bem vindo de volta</span>
+            <h2>Alan Gabriel </h2>
+            </div>
+
+            <div class="user-avatar"> A </div>
+</header>
+
+<section class="balance-card">
+<p class="card-label">Saldo Total Disponível</p>
+<h1 class="card-value" id="total-balance">R$ 0,00</h1>
+
+<div class="card-stats">
+    <div class="stat-item income">
+        <span> ▲Entradas </span>
+        <p id="total-income"> R$ 0,00 </p>
+</div>
+
+<div class="stat-item expense">
+    <span> ▼Saídas </span>
+    <p id="total-expense"> R$ 0,00 </p>
+</div>
+</div>
+</section>
+
+<section class="goals-section">
+<h3> Minhas Metas</h3>
+<div class="goal-item">
+<div class="goal-card">
+<span> Reserva de Emergência</span>
+<div id="goal-percentage">0%</div>
+</div>
+
+<div class="progress-bar-bg">
+    <div class="progress-bar-fil" id="goal-progress">
+        </div>
+    </div>
+</section>
+  
+
+<section class="transaction-form-section">
+    <h3>Nova Transação</h3>
+
+    <form id="transaction-form">
+        <input type="text" id="desc" placeholder="Ex: Salário, Aluguel, Uber..." required/>
+
+        <input type="number" id="amount" step="0.01" placeholder="valor (R$)" required/>
+        <select id="type">
+            <option value="income"> Entrada (Ganho) </option>
+            <option value="expense"> Saída (Gasto) </option>
+        </select>
+
+        <button type="submit" id="btn-add"> Adicionar Registro </button>
+    </form>
+</section>
+
+<section class="history-section">
+    <h3>Histórico de Atividades</h3>
+
+    <ul class="transaction-list" id="transaction-list-container">
+
+    </ul>
+</section>
+
+</main>
+    
+<script src="./dist/script.js"></script>
+</body>
+</html>
