@@ -1,10 +1,4 @@
 "use strict";
-/**
-* Project: ApexFix - Finanças e Metas
-* Author: Alan Gabriel
-* Repository: https://github.com/Alan-araujo-veloso
-* Copyright © 2026. All rights reserved.
-*/
 let transactions = [];
 const FINANCIAL_GOAL = 5000;
 const balanceElement = document.getElementById('total-balance');
