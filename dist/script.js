@@ -20,6 +20,8 @@ function updateBalances() {
         .reduce((acc, cur) => acc + cur.amount, 0);
     const currentBalance = totalIncome - totalExpense;
     balanceElement.textContent = currentBalance.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    incomeElement.textContent = totalIncome.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    expenseElement.textContent = totalExpense.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     updateGoalProgress(currentBalance);
 }
 function updateGoalProgress(currentBalance) {
