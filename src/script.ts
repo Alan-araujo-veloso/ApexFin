@@ -8,7 +8,7 @@ interface Transaction {
 let transactions: Transaction[] = [];
 
 const FINANCIAL_GOAL: number = 5000;
-const API_URL = 'http://localhost:5000/api/transactions';
+const API_URL = 'https://apexfin-backend.onrender.com/api/transactions';
 
 const balanceElement = document.getElementById('total-balance') as HTMLHeadingElement;
 const incomeElement = document.getElementById('total-income') as HTMLParagraphElement;
