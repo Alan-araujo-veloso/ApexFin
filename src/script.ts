@@ -1,5 +1,5 @@
 interface Transaction {
-    id: number;
+    _id?: string;
     description: string;
     amount: number;
     type: 'income' | 'expense';
@@ -8,6 +8,7 @@ interface Transaction {
 let transactions: Transaction[] = [];
 
 const FINANCIAL_GOAL: number = 5000;
+const API_URL = 'http://localhost:5000/api/transactions';
 
 const balanceElement = document.getElementById('total-balance') as HTMLHeadingElement;
 const incomeElement = document.getElementById('total-income') as HTMLParagraphElement;
@@ -70,20 +71,49 @@ listContainer.appendChild(li);
 });
 }
 
-formElement.addEventListener('submit', (event: SubmitEvent) => {
+formElement.addEventListener('submit', async (event: SubmitEvent) => {
     event.preventDefault();
 
-    const newTransaction: Transaction = {
-        id: Date.now(), 
+    const transactionData = {
 
         description: descInput.value.trim(),
         amount: parseFloat(amountInput.value),
         type: typeSelect.value as 'income' | 'expense'
 };
-transactions.unshift(newTransaction);
+try {
+    const response = await fetch(API_URL, {
+        method: 'POST',
+      headers: {
+'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(transactionData)
+      });
+      if (response.ok) {
+        await loadTransactions();
+        formElement.reset();
+      }
+    }
+      catch (error) {
+        alert('Falha na comunicação de rede com o banco de dados.');
+      }
+    });
 
 renderTransactions();
 updateBalances();
 
 formElement.reset();
-});
+
+async function loadTransactions(): Promise<void> {
+    try {
+        const response = await fetch(API_URL);
+        transactions = await response.json();
+
+        renderTransactions();
+        updateBalances();
+    } catch (error) {
+        console.error('Erro ao conectar com o MongoDB:', error);
+
+    }
+    }
+    loadTransactions();
+
