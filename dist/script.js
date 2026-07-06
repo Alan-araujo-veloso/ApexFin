@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 let transactions = [];
 const FINANCIAL_GOAL = 5000;
-const API_URL = 'http://localhost:5000/api/transactions';
+const API_URL = 'https://apexfin-backend.onrender.com/api/transactions';
 const balanceElement = document.getElementById('total-balance');
 const incomeElement = document.getElementById('total-income');
 const expenseElement = document.getElementById('total-expense');
