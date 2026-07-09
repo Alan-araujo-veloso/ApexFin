@@ -106,8 +106,18 @@ formElement.reset();
 async function loadTransactions(): Promise<void> {
     try {
         const response = await fetch(API_URL);
-        transactions = await response.json();
+        const data = await response.json();
 
+        if (Array.isArray(data)) {
+transactions = data;
+        } else if (data && Array.isArray(data.transactions)) {
+         transactions = data.transactions;   
+        } else if (data && Array.isArray(data.data)) {
+            transactions = data.data;
+        } else {
+            transactions =[];
+        }
+        
         renderTransactions();
         updateBalances();
     } catch (error) {

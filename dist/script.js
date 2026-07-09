@@ -90,7 +90,19 @@ function loadTransactions() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const response = yield fetch(API_URL);
-            transactions = yield response.json();
+            const data = yield response.json();
+            if (Array.isArray(data)) {
+                transactions = data;
+            }
+            else if (data && Array.isArray(data.transactions)) {
+                transactions = data.transactions;
+            }
+            else if (data && Array.isArray(data.data)) {
+                transactions = data.data;
+            }
+            else {
+                transactions = [];
+            }
             renderTransactions();
             updateBalances();
         }
