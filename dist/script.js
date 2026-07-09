@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 let transactions = [];
 const FINANCIAL_GOAL = 5000;
 const API_URL = 'https://apexfin-backend.onrender.com/api/transactions';
+const successSound = new Audio('./dist/audio/click.mp3');
 const balanceElement = document.getElementById('total-balance');
 const incomeElement = document.getElementById('total-income');
 const expenseElement = document.getElementById('total-expense');
@@ -75,6 +76,13 @@ formElement.addEventListener('submit', (event) => __awaiter(void 0, void 0, void
             body: JSON.stringify(transactionData)
         });
         if (response.ok) {
+            try {
+                successSound.currentTime = 0;
+                yield successSound.play();
+            }
+            catch (audioError) {
+                console.log('Navegador barrou o som ou o caminho mudou na vercel:', audioError);
+            }
             yield loadTransactions();
             formElement.reset();
         }

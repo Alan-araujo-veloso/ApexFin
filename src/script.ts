@@ -10,6 +10,8 @@ let transactions: Transaction[] = [];
 const FINANCIAL_GOAL: number = 5000;
 const API_URL = 'https://apexfin-backend.onrender.com/api/transactions';
 
+const successSound = new Audio('./dist/audio/click.mp3');
+
 const balanceElement = document.getElementById('total-balance') as HTMLHeadingElement;
 const incomeElement = document.getElementById('total-income') as HTMLParagraphElement;
 const expenseElement = document.getElementById('total-expense') as HTMLParagraphElement;
@@ -20,6 +22,7 @@ const typeSelect = document.getElementById('type') as HTMLSelectElement;
 const listContainer = document.getElementById('transaction-list-container') as HTMLDataListElement;
 const goalProgressBarFill = document.getElementById('goal-progress') as HTMLDivElement;
 const goalPercentageElement = document.getElementById('goal-percentage') as HTMLDivElement;
+
 
 function updateBalances(): void {
     const totalIncome = transactions
@@ -89,6 +92,12 @@ try {
       body: JSON.stringify(transactionData)
       });
       if (response.ok) {
+        try {
+        successSound.currentTime = 0;
+  await successSound.play();
+  } catch (audioError) {
+    console.log('Navegador barrou o som ou o caminho mudou na vercel:', audioError);
+  }
         await loadTransactions();
         formElement.reset();
       }
