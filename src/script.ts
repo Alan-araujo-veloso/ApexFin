@@ -54,25 +54,56 @@ goalProgressBarFill.style.width = `${percentage}%`;
 
 function renderTransactions(): void {
 listContainer.innerHTML = '';
+
 transactions.forEach((transaction) => {
 const li = document.createElement('li');
 li.classList.add('transaction-item');
 
+const descricaoFormatada = transaction.description.charAt(0).toUpperCase() + transaction.description.slice(1).toLowerCase();
 const FormattedAmount = transaction.amount.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'});
 
 if (transaction.type === 'income') {
     li.style.borderLeftColor = 'var(--success)';
-    li.innerHTML = `<span>${transaction.description}</span> <strong style="color: var(--success)">+ ${FormattedAmount}</strong>`; 
-}  
+    li.innerHTML = `
+    <span>${descricaoFormatada}</span> 
+    <div style="display: flex; align-items: center; gap: 12px;">
+    <strong style="color: var(--success)">+ ${FormattedAmount}</strong>
+<button class="delete-btn" style="background: none; border: none; cursor: pointer;" onclick="deleteTransaction('${transaction._id}')">❌</button>
+    </div>
+    `;
 
-else {
+} else {
     li.style.borderLeftColor =  'var(--danger)';
-    li.innerHTML = `<span>${transaction.description}</span> <strong style="color: var(--danger)"> ${FormattedAmount}</strong>`;
+    li.innerHTML = `
+    <span>${descricaoFormatada}</span>
+     <div style="display: flex; align-items: center; gap: 12px;">
+    <strong style="color: var(--danger)">- ${FormattedAmount}</strong>
+     <button class="delete-btn" style="background: none; border: none; cursor: pointer;" onclick="deleteTransaction('${transaction._id}')>"❌</button>
+    </div>
+    `;
 }
 
 listContainer.appendChild(li);
 });
 }
+
+(window as any).deleteTransaction = async (id: string): Promise<void> => {
+    if(confirm('Tem ceerteza que deseja apagar essa transação?')) {
+try {
+    const response = await fetch('${API_URL}/${id}', {
+        method: 'DELETE'
+    });
+
+    if (response.ok) {
+        await loadTransactions();
+    } else {
+        alert('Erro ao deletar a transação no servidor.');
+    }
+} catch (error) {
+    alert('Falha na comunicação com o banco de dados.');
+}
+    }
+};
 
 formElement.addEventListener('submit', async (event: SubmitEvent) => {
     event.preventDefault();
