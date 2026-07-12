@@ -67,25 +67,29 @@ li.classList.add('transaction-item');
 const descricaoFormatada = transaction.description.charAt(0).toUpperCase() + transaction.description.slice(1).toLowerCase();
 const FormattedAmount = transaction.amount.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'});
 
-if (transaction.type === 'income') {
-    li.style.borderLeftColor = 'var(--success)';
-    li.innerHTML = `
-    <span>${descricaoFormatada}</span> 
-    <div style="display: flex; align-items: center; gap: 12px;">
-    <strong style="color: var(--success)">+ ${FormattedAmount}</strong>
-<button class="delete-btn" style="background: none; border: none; cursor: pointer;" onclick="deleteTransaction('${transaction._id}')">❌</button>
-    </div>
-    `;
+const isIncome = transaction.type === 'income';
+if (transaction.type === 'income'){
+li.style.borderLeftColor = isIncome ? 'var(--success)' : 'var(--danger)';
 
+li.innerHTML = `
+<span>${descricaoFormatada}</span>
+<div class="transaction-values">
+    <strong class="${isIncome ? 'text-success' : 'text-danger'}">
+${isIncome ? '+' : '-'} ${FormattedAmount}
+    </strong>
+<button class="delete-btn" onclick="deleteTransaction('${transaction._id}')">❌</button>
+</div>
+`;
 } else {
-    li.style.borderLeftColor =  'var(--danger)';
-    li.innerHTML = `
-    <span>${descricaoFormatada}</span>
-     <div style="display: flex; align-items: center; gap: 12px;">
-    <strong style="color: var(--danger)">- ${FormattedAmount}</strong>
-     <button class="delete-btn" style="background: none; border: none; cursor: pointer;" onclick="deleteTransaction('${transaction._id}')>"❌</button>
-    </div>
-    `;
+li.style.borderLeftColor =  'var(--danger)';
+li.innerHTML = `
+<span>${descricaoFormatada}</span>
+<div class="transaction-values">
+    <strong class="text-danger">- ${FormattedAmount}</strong>
+<button class="delete-btn" onclick="deleteTransaction('${transaction._id}')">❌</button>
+
+</div>
+`;
 }
 
 listContainer.appendChild(li);
@@ -93,7 +97,7 @@ listContainer.appendChild(li);
 }
 
 (window as any).deleteTransaction = async (id: string): Promise<void> => {
-    if(confirm('Tem ceerteza que deseja apagar essa transação?')) {
+    if(confirm('Tem certeza que deseja apagar essa transação?')) {
 try {
     const response = await fetch(`${API_URL}/${id}`, {
         method: 'DELETE'

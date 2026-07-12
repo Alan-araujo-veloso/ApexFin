@@ -208,5 +208,22 @@ transition: background-color 0.2s;
 }
 
 .delete-btn {
-    justify-content: space-between;
+background: none;
+border: none;
+cursor: pointer;
+padding: 4px
+}
+
+.transaction-values{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.text-success{
+    color: var(--success);
+}
+
+.text-danger {
+    color: var(--danger);
 }
