@@ -10,7 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 let transactions = [];
 const FINANCIAL_GOAL = 5000;
-const API_URL = 'https://apexfin-backend.onrender.com/api/transactions';
+const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+const API_URL = isLocalhost
+    ? 'http://localhost:5000/api/transactions'
+    : 'https://apexfin-backend.onrender.com/api/transactions';
 const successSound = new Audio('./dist/audio/click.mp3');
 const balanceElement = document.getElementById('total-balance');
 const incomeElement = document.getElementById('total-income');
@@ -76,7 +79,7 @@ function renderTransactions() {
 window.deleteTransaction = (id) => __awaiter(void 0, void 0, void 0, function* () {
     if (confirm('Tem ceerteza que deseja apagar essa transação?')) {
         try {
-            const response = yield fetch('${API_URL}/${id}', {
+            const response = yield fetch(`${API_URL}/${id}`, {
                 method: 'DELETE'
             });
             if (response.ok) {
