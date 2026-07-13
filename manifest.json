@@ -1,0 +1,21 @@
+{
+    "short_name": "ApexFin",
+    "name": "ApexFin - Finanças e Metas",
+    "icons": [
+        {
+        "src": "icon-192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+},
+{
+    "src": "icon-512.png",
+    "type": "image/png",
+    "sizes": "512x512"
+}
+    ],
+    "start_url": "/",
+    "background-color": "#121214",
+    "theme_color": "#4c4ced", 
+    "display": "standalone",
+    "orientation": "portrait"
+}
