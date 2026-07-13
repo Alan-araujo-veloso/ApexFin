@@ -4,18 +4,18 @@
     "description": " Controle suas finanças pessoais, entradas, saídas e metas de forma simples.",
     "icons": [
         {
-        "src": "/icon-192.png",
+        "src": "/capas/icon-192.png",
         "type": "image/png",
         "sizes": "192x192"
 },
 {
-    "src": "/icon-512.png",
+    "src": "/capas/icon-512.png",
     "type": "image/png",
     "sizes": "512x512"
 }
     ],
     "start_url": "/",
-    "background-color": "#121214",
+    "background_color": "#121214",
     "theme_color": "#4c4ced", 
     "display": "standalone",
     "orientation": "portrait"
