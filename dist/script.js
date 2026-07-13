@@ -158,3 +158,10 @@ function loadTransactions() {
     });
 }
 loadTransactions();
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('Service Worker ativo!', reg))
+            .catch(err => console.log('Erro ao registrar SW:', err));
+    });
+}
