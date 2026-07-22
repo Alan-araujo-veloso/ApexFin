@@ -227,3 +227,48 @@ padding: 4px
 .text-danger {
     color: var(--danger);
 }
+
+.Login-container {
+ width: 35px;
+ margin-left: 100px;
+ margin-top: 325px;
+ justify-content: center;
+ flex-direction: column;
+}
+
+.Login-container h1 {
+    font-size: 2.5rem;
+    color: grey;
+    margin-bottom: 24px;
+}
+
+.Login-container input {
+   width: 100px; 
+   max-width: 320px;
+   padding: 14px;
+   font-size: 1.1rem;
+   margin-bottom: 16px;
+   border-radius: 8px;
+   border: 1px solid #444;
+   background-color: #222;
+   color: #fff;
+}
+
+.Login-container button {
+    width: 100%;
+    max-width: 320px;
+    padding: 42px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #6366f1;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.Login-container button:hover {
+    background-color: #4f46e5;
+}
+
