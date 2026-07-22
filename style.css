@@ -229,39 +229,49 @@ padding: 4px
 }
 
 .Login-container {
- width: 35px;
- margin-left: 100px;
- margin-top: 325px;
- justify-content: center;
+ display: flex;
  flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ width: 100%;
+ max-width: 400px;
+ margin: 0 auto;
+ padding: 24px;
+ min-height: 100vh;
 }
 
 .Login-container h1 {
     font-size: 2.5rem;
-    color: grey;
+    color: var(--text-primary);
     margin-bottom: 24px;
+    text-align: center;
 }
 
 .Login-container input {
-   width: 100px; 
+   width: 100%; 
    max-width: 320px;
    padding: 14px;
    font-size: 1.1rem;
    margin-bottom: 16px;
    border-radius: 8px;
    border: 1px solid #444;
-   background-color: #222;
-   color: #fff;
+   background-color: var(--card-bg);
+   color: var(--text-primary);
+   outline: none;
+}
+
+.Login-container input:focus {
+    border-color: var(--accent-color)
 }
 
 .Login-container button {
     width: 100%;
-    max-width: 320px;
-    padding: 42px;
-    font-size: 1.2rem;
+    max-width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
     font-weight: bold;
-    background-color: #6366f1;
-    color: #ffffff;
+    background-color: var(--accent-color);
+    color: var(--text-primary);
     border: none;
     border-radius: 8px;
     cursor: pointer;
