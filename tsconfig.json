@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "jsx": "react-jsx",
-    "target": "ES6",
-    "module": "commonjs",
+    "target": "es2022",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "rootDir": "./src",
     "outDir": "./dist",
     "strict": true,
