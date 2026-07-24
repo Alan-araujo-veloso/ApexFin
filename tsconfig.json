@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "jsx": "react-jsx",
-    "target": "es2022",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "target": "esnext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "rootDir": "./src",
     "outDir": "./dist",
     "strict": true,
