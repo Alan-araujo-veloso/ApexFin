@@ -1,8 +1,11 @@
 import { useState, useEffect, FormEvent } from "react";
 import {useNavigate } from "react-router"
 import api from "../services/api";
+import { useContext } from 'react';
+import { AuthContext } from '../contexts/Authcontext';
 
 export function Dashboard() {
+  const { user } = useContext(AuthContext);
   const [transactions, setTransactions] = useState<any[]>([]);
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
@@ -64,9 +67,11 @@ export function Dashboard() {
       <header className="app-header">
         <div className="user-info">
           <span>Olá, bem vindo de volta</span>
-          <h2>Alan Gabriel</h2>
+          <h2>{user?.name || 'Usuário'}</h2>
         </div>
-        <div className="user-avatar">A</div>
+        <div className="user-avatar">
+          {user?.name ? user.name.charAt(0).toUpperCase() : 'A'}
+          </div>
       </header>
 
       <section className="balance-card">

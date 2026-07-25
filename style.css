@@ -264,8 +264,8 @@ padding: 4px
     border-color: var(--accent-color)
 }
 
-.Login-container button {
-    width: 100%;
+.Login-container button[type="submit"]{
+    width: 100px;
     max-width: 100%;
     padding: 14px;
     font-size: 1.1rem;
@@ -282,3 +282,15 @@ padding: 4px
     background-color: #4f46e5;
 }
 
+.Login-container div {
+    text-align: center;
+    width: 100%;
+}
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
