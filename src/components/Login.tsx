@@ -84,7 +84,7 @@ required
         setError('');
         setSuccessMessage('');
     }}
-    style={{ background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}
+    style={{ background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline', color: 'white'}}
 >
     {isRegistering ? 'Já tem uma conta? Faça login' : 'Não tem uma conta? Crie agora'}
     </button>

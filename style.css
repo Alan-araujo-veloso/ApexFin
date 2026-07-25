@@ -265,8 +265,8 @@ padding: 4px
 }
 
 .Login-container button[type="submit"]{
-    width: 100px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 320px;
     padding: 14px;
     font-size: 1.1rem;
     font-weight: bold;
@@ -276,6 +276,7 @@ padding: 4px
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.2s;
+    margin: 42 auto;
 }
 
 .Login-container button:hover {
