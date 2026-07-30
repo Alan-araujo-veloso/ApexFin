@@ -34,7 +34,8 @@ const handleLoSubmit = async (e: React.FormEvent) => {
         } else {
             // rota login
             await login(email, password);
-            alert('Login realizado com sucesso!');
+
+            
         navigate('/dashboard');
     } 
 }catch (err: any) {

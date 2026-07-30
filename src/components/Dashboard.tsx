@@ -31,7 +31,10 @@ export function Dashboard() {
   const totalExpense = transactions.filter(t => t.type === 'expense').reduce((acc, t) => acc + t.amount, 0);
   const balance = totalIncome - totalExpense;
   const progress = Math.min(Math.round((balance > 0 ? balance / 5000 * 100 : 0)), 100);
-
+  const playSound = () => {
+  const audio = new Audio('/pro.mp3');
+  audio.play().catch(err => console.log(err));
+  };
  async function handleAdd(e: FormEvent) {
     e.preventDefault();
 
@@ -41,6 +44,8 @@ export function Dashboard() {
           amount: Number(amount),
            type: type
         });
+
+        playSound();
       
       setDescription("");
       setAmount("");
@@ -55,6 +60,10 @@ export function Dashboard() {
     if (confirm('Tem certeza que deseja apagar esta transação?')) {
       try {
         await api.delete(`transactions/${id}`);
+
+const audio = new Audio('/somdelete.mp3');
+audio.play().catch(err => console.log(err));
+
         loadTransactions();
       } catch (error) {
         console.error("Erro ao deletar:", error);
