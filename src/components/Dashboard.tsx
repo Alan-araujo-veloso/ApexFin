@@ -65,8 +65,7 @@ export function Dashboard() {
 
 const audio = new Audio('/apexfin/public/qe.mp3');
 audio.play().catch(err => console.log(err));
-
-        loadTransactions();
+loadTransactions();
       } catch (error) {
         console.error("Erro ao deletar:", error);
       }
