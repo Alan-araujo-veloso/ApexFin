@@ -1,4 +1,4 @@
-import React, { useState, useContext, ChangeEvent } from 'react'; 
+import React, { useState, useContext, type ChangeEvent } from 'react'; 
 import { AuthContext } from '../contexts/Authcontext';
 import "../../style.css";
 import {useNavigate } from 'react-router-dom';
