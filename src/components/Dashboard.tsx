@@ -1,5 +1,4 @@
-import { useState, useEffect, FormEvent } from "react";
-import {useNavigate } from "react-router"
+import { useState, useEffect, type FormEvent } from "react";
 import api from "../services/api";
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/Authcontext';
@@ -58,7 +57,6 @@ const playSound = () => {
       alert("Erro ao salvar: " + (error.response?.data?.message || error.message));
     }
   }
-  
  async function deleteTransaction(id: string) {
   try {
     await api.delete(`transactions/${id}`);
