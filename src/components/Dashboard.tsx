@@ -33,7 +33,7 @@ export function Dashboard() {
   const progress = Math.min(Math.round((balance > 0 ? balance / 5000 * 100 : 0)), 100);
   
   const playSound = () => {
-  const audio = new Audio('/qw.mp3');
+  const audio = new Audio('/apexfin/public/qw.mp3');
   audio.play().catch(err => {
     console.log("Erro ao tocar áudio:", err);
   });
@@ -63,7 +63,7 @@ export function Dashboard() {
       try {
         await api.delete(`transactions/${id}`);
 
-const audio = new Audio('/qe.mp3');
+const audio = new Audio('/apexfin/public/qe.mp3');
 audio.play().catch(err => console.log(err));
 
         loadTransactions();
@@ -71,7 +71,6 @@ audio.play().catch(err => console.log(err));
         console.error("Erro ao deletar:", error);
       }
     }
-  }
 
   return (
     <main className="app-container">
