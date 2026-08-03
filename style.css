@@ -41,12 +41,13 @@ body {
 
 .user-info span {
 font-size: 13px;
-color: var(--text-secondary);
+color: var(--text-secondary) !important;
 }
 
 .user-info h2 {
     font-size: 20px;
     font-weight: 600;
+    color: var(--text-secondary) !important;
 }
 
 .user-avatar {
@@ -58,6 +59,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 font-weight: 700;
+color: var (--text-primary) !important;
 }
 
 .balance-card {
@@ -69,13 +71,14 @@ border: 1px solid #232A3C;
 
 .card-label {
     font-size: 14px;
-    color: var(--text-secondary);
+    color: var(--text-secondary) !important;
 }
 
 .card-value {
     font-size: 16px;
     font-weight: 600;
     margin-top: 4px;
+    color: var(--text-primary) !important;
 }
 
 .card-stats {
@@ -88,7 +91,7 @@ border: 1px solid #232A3C;
 
 .stat-item span {
 font-size: 12px;
-color: var(--text-secondary);
+color: var(--text-secondary)!important;
 }
 
 .stat-item p {
@@ -97,13 +100,14 @@ color: var(--text-secondary);
     margin-top: 4px;
 }
 
-.stat-item.income p { color: var(--success);}
-.stat-item.expense p { color: var(--danger);}
+.stat-item.income p { color: var(--success) !important;}
+.stat-item.expense p { color: var(--danger) !important;}
 
 .goals-section h3, .transaction-form-section h3, .history-section h3 {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 12px;
+    color: var(--text-primary) !important;
 } 
 
 .goal-item {
