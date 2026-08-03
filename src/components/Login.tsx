@@ -2,7 +2,7 @@ import React, { useState, useContext, type ChangeEvent } from 'react';
 import { AuthContext } from '../contexts/Authcontext';
 import "../../style.css";
 import {useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../services/api';
 
 export function Login() {
 const navigate = useNavigate();
@@ -15,7 +15,6 @@ const[successMessage, setSuccessMessage] = useState('');
 const [loading, setLoading] = useState(false);
 
 const { login } = useContext(AuthContext);
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const handleLoSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,7 +26,7 @@ const handleLoSubmit = async (e: React.FormEvent) => {
     try {
         if (isRegistering) {
             //cadastro rota
-            await axios.post(`${API_URL}/auth/register`, { name, email, password });
+      await api.post('/auth/register', { name, email, password });
         setSuccessMessage('Conta criada com sucesso! Faça o login.');
         setIsRegistering(false);
         setPassword('');
@@ -38,11 +37,9 @@ const handleLoSubmit = async (e: React.FormEvent) => {
             
         navigate('/dashboard');
     } 
-}catch (err: any) {
-        setError(err.response?.data?.message || 'Erro ao processar a solicitação. Verifique suas credenciais.');
-    } finally {
-        setLoading(false);
-    }
+} catch (err: any) {
+    setError(err.response?.data?.message || 'Erro ao processar a solicitação. Verifique suas credenciais.');
+}
     };
 
     return (
