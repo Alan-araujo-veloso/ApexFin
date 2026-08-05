@@ -9,6 +9,7 @@ export function Dashboard() {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("income");
+  const [editingId, setEditingId] = useState<string | null>(null);
 
   async function loadTransactions() {
     try { 
@@ -41,21 +42,37 @@ const playSound = () => {
     e.preventDefault();
 
     try {
-      await api.post('transactions', {
-        description: description,
+      if (editingId) {
+        await api.put(`/transactions/${editingId}`, {
+          description,
           amount: Number(amount),
-           type: type
+          type
+        });
+        setEditingId(null);
+      } else {
+        await api.post('transactions', {
+          description: description,
+          amount: Number(amount),
+          type: type
         });
 
         playSound();
+      }
       
       setDescription("");
       setAmount("");
       loadTransactions();
-    } catch (error: any ) {
+    } catch (error: any) {
       console.error("Erro detalhado:", error.response?.data || error);
       alert("Erro ao salvar: " + (error.response?.data?.message || error.message));
     }
+  }
+
+  function startEdit(t: any) {
+    setEditingId(t._id);
+    setDescription(t.description);
+    setAmount(String(t.amount));
+    setType(t.type);
   }
  async function deleteTransaction(id: string) {
   try {
@@ -119,7 +136,7 @@ const playSound = () => {
             <option value="income"> Entrada (Ganho) </option>
             <option value="expense"> Saída (Gasto) </option>
           </select>
-          <button type="submit"> Adicionar Registro </button>
+          <button type="submit"> {editingId ? 'Salvar Alterações' : 'Adicionar Registro'} </button>
         </form>
       </section>
 
@@ -133,6 +150,7 @@ const playSound = () => {
                 <strong className={t.type === 'income' ? 'text-success' : 'text-danger'}>
                   {t.type === 'income' ? '+' : '-'} R$ {t.amount.toFixed(2)}
                 </strong>
+                <button className="edit-btn" onClick={() => startEdit(t)} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>✏️</button>
                 <button className="delete-btn" onClick={() => deleteTransaction(t._id)}>❌</button>
               </div>
             </li>
