@@ -43,25 +43,31 @@ const playSound = () => {
 
     try {
       if (editingId) {
-        await api.put(`/transactions/${editingId}`, {
+        const response = await api.put(`/transactions/${editingId}`, {
           description,
           amount: Number(amount),
           type
         });
+        const updateItem = response.data.updateTransaction || response.data;
+        setTransactions(prev => prev.map(t => t._id === editingId ? updateItem : t));
         setEditingId(null);
       } else {
-        await api.post('transactions', {
-          description: description,
+        const response = await api.post('transactions', {
+          description,
           amount: Number(amount),
-          type: type
+          type
         });
 
         playSound();
+const newItem = response.data.transaction || response.data;
+setTransactions(prev => [newItem, ...prev]);
       }
       
       setDescription("");
       setAmount("");
-      loadTransactions();
+      setType("income");
+      setEditingId(null);
+
     } catch (error: any) {
       console.error("Erro detalhado:", error.response?.data || error);
       alert("Erro ao salvar: " + (error.response?.data?.message || error.message));
