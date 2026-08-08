@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../contexts/Authcontext';
 
 export function Dashboard() {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const [transactions, setTransactions] = useState<any[]>([]);
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
@@ -100,8 +100,16 @@ setTransactions(prev => [newItem, ...prev]);
           <span>Olá, bem vindo de volta</span>
           <h2>{user?.name || 'Usuário'}</h2>
         </div>
+
+        <div className="user-profile-section">
+          < div className="user-avatar-container"></div>
         <div className="user-avatar">
           {user?.name ? user.name.charAt(0).toUpperCase() : 'A'}
+          </div>
+
+          <button className="logout-btn" onClick={logout} title="Sair da conta">
+          🚪 Sair
+          </button>
           </div>
       </header>
 

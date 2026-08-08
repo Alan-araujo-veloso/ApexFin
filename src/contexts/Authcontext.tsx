@@ -53,6 +53,8 @@ const logout = () => {
     localStorage.removeItem('userName');
     localStorage.removeItem('userEmail');
     setUser(null);
+    
+    window.location.href = '/';
 }
 
     return (
