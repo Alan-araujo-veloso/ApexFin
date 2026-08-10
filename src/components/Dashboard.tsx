@@ -10,6 +10,7 @@ export function Dashboard() {
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("income");
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [showMenu, setShowMenu] = useState(false);
 
   async function loadTransactions() {
     try { 
@@ -102,14 +103,17 @@ setTransactions(prev => [newItem, ...prev]);
         </div>
 
         <div className="user-profile-section">
-          < div className="user-avatar-container"></div>
-        <div className="user-avatar">
+          < div className="user-avatar-container" onClick={() => setShowMenu(!showMenu)}>
           {user?.name ? user.name.charAt(0).toUpperCase() : 'A'}
           </div>
 
+          {showMenu && (
+            <div className="profile-dropdown">
           <button className="logout-btn" onClick={logout} title="Sair da conta">
           🚪 Sair
           </button>
+          </div>
+          )}
           </div>
       </header>
 
