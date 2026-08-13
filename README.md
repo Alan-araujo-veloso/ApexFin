@@ -1,32 +1,48 @@
-# React + TypeScript + Vite
+# 🚀 ApexFin
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> Um aplicativo web moderno de controle financeiro pessoal, desenvolvido para gerenciar entradas, saídas, metas e o saldo total de forma prática, rápida e responsiva.
 
-Currently, two official plugins are available:
+## 💻 Sobre o Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+O **ApexFin** nasceu com o objetivo de oferecer uma ferramenta limpa e intuitiva para o gerenciamento de finanças do dia a dia. O projeto foi construído priorizando uma arquitetura limpa, componentização eficiente e foco total na experiência do usuário (Mobile-First).
 
-## React Compiler
+## ✨ Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* 📊 **Dashboard Financeiro:** Visualização em tempo real do saldo total disponível, entradas e saídas.
+* 🎯 **Acompanhamento de Metas:** Monitoramento visual do progresso de objetivos financeiros (como reservas de emergência).
+* 📝 **Gestão de Transações:** Adição e exclusão dinâmica de registros financeiros.
+* 👤 **Sistema de Autenticação & Perfil:** Fluxo de login seguro, salvamento de sessão e menu dropdown integrado no avatar do usuário com opção de logout rápido.
+* 📱 **Design Responsivo:** Adaptado perfeitamente para diferentes tamanhos de tela (Mobile-First).
 
-## Expanding the Oxlint configuration
+## 🛠️ Tecnologias Utilizadas
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+Este projeto foi desenvolvido utilizando as tecnologias mais modernas do ecossistema web:
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+* **React.js** (com TypeScript)
+* **Vite**
+* **CSS Puro / Estilização Modularizada**
+* **Git & GitHub**
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## 📦 Como Rodar o Projeto
+
+Para rodar este projeto na sua máquina localmente, siga os passos abaixo:
+
+```bash
+# 1. Clone este repositório
+git clone [https://github.com/Alan-araujo-veloso/apexfin](https://github.com/Alan-araujo-veloso/apexfin)
+
+# 2. Acesse a pasta do projeto
+cd apexfin
+
+# 3. Instale as dependências
+npm install
+
+# 4. Inicie o servidor de desenvolvimento
+npm run dev
+
+## 👨‍💻 Desenvolvido por
+
+**Alan Gabriel Araujo Veloso**  
+*Front-End Developer*  
+
+[LinkedIn](https://www.linkedin.com/in/alan-veloso) | [GitHub](https://github.com/Alan-araujo-veloso)
