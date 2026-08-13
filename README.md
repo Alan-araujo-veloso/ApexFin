@@ -29,7 +29,7 @@ Para rodar este projeto na sua máquina localmente, siga os passos abaixo:
 
 ```bash
 # 1. Clone este repositório
-git clone [https://github.com/Alan-araujo-veloso/apexfin](https://github.com/Alan-araujo-veloso/apexfin)
+git clone https://github.com/Alan-araujo-veloso/apexfin(https://github.com/Alan-araujo-veloso/apexfin)
 
 # 2. Acesse a pasta do projeto
 cd apexfin
